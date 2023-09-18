@@ -1,0 +1,2 @@
+# simdEncryption
+通过各个平台的simd方式对sha等加密算法硬件加速代码
