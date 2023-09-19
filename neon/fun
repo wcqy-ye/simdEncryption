@@ -1,0 +1,42 @@
+//uint32x4_t vdupq_n_u32 将u32（无符号32位）值复制4份返回到寄存器中
+//uint32x4_t vreinterpretq_u32_u8 将源向量中的8bit×16元素转为32bit×4元素
+
+float32x4_t vdupq_n_f32 (float32_t value)
+将value复制4分存到返回的寄存器中
+
+float32x4_t vld1q_f32 (float32_t const * ptr)
+从数组中依次Load4个元素存到寄存器中
+
+相应的 有void vst1q_f32 (float32_t * ptr, float32x4_t val)
+将寄存器中的值写入数组中
+
+float32x4_t vaddq_f32 (float32x4_t a, float32x4_t b)
+返回两个寄存器对应元素之和 r = a+b
+
+相应的 有float32x4_t vsubq_f32 (float32x4_t a, float32x4_t b)
+返回两个寄存器对应元素之差 r = a-b
+
+float32_t vgetq_lane_f32 (float32x4_t v, const int lane)
+返回寄存器某一lane的值
+
+其他常用的函数还有：
+
+float32x4_t vmulq_f32 (float32x4_t a, float32x4_t b)
+返回两个寄存器对应元素之积 r = a*b
+
+float32x4_t vmlaq_f32 (float32x4_t a, float32x4_t b, float32x4_t c)
+r = a +b*c
+
+float32x4_t vextq_f32 (float32x4_t a, float32x4_t b, const int n)
+拼接两个寄存器并返回从第n位开始的大小为4的寄存器 0<=n<=3
+
+
+uint8x16_t 	vld1q_u8(uint8_t const * ptr)从指针处加载16个8位（1字节）的数据返回寄存器
+uint8x16_t vrev32q_u8(uint8x16_t vec)此指令反转源 SIMD&FP 寄存器中矢量每个字（4字节）中 8 位或 16 位元素的顺序（0 1 2 3-》3 2 1 0），将结果放入矢量中，然后将矢量写入目标 SIMD&FP 寄存器（可以实现大端对齐）
+
+
+veorq_u32 按位异或 vandq_u32按位与 vbicq_u32按位与非
+
+
+
+_mm_alignr_epi8(TMP, STATE1, 8)对应 vextq_u8(vreinterpretq_u8_u32(TMP), vreinterpretq_u8_u32(STATE1), 8)
