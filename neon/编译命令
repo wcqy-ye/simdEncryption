@@ -1,0 +1,2 @@
+g++ -DTEST_MAIN -march=armv8-a+crypto -O2 -static sha256-armteststringfile.c -o sha256-armteststringfile.exe
+gcc -DTEST_MAIN -std=c99 -O2 -static sha256testfilestring.c -o sha256testfilestring.exe
